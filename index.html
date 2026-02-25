@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Saint-Saturnin - Pour vous et avec vous</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <header>
+        <div class="logo-container">
+            <img src="visuel/logo.jpg" alt="Logo Saint-Saturnin" class="logo">
+        </div>
+        <nav>
+            <a href="#accueil">Accueil</a>
+            <a href="#programme">Notre Programme</a>
+            <a href="#equipe">Notre Équipe</a>
+            <a href="#suivez-nous">Suivez Nous</a>
+        </nav>
+    </header>
+
+    <section id="accueil" class="hero">
+        <h1>SAINT-SATURNIN</h1>
+        <h2>POUR VOUS ET AVEC VOUS</h2>
+        <p class="intro-text">"Depuis 2014, vous m'avez fait confiance, vous nous avez fait confiance et j'en suis très honoré. De nouveaux défis se présentent chaque jour et nous avons la volonté de les relever et de continuer à nous unir pour préserver notre cadre de vie et son authenticité." - <strong>Yvan GOULETTE</strong></p>
+        
+        <div class="alert-box">
+            <h3>📅 Réunion Publique</h3>
+            <p>Le jeudi 12 mars à 20h30 | Au Centre Culturel du Val de Vray</p>
+        </div>
+    </section>
+
+    <section id="programme">
+        <h2 class="section-title">Notre Programme</h2>
+        
+        <div class="grid-programme">
+            <div class="card theme-bleu">
+                <h3>Jeunesse, éducation et culture</h3>
+                <p><strong>Objectif:</strong> Offrir à chaque jeune les moyens de réussir et de s'épanouir.</p>
+                <ul>
+                    <li>Rénovation de l'école élémentaire et du Centre culturel.</li>
+                    <li>Création d'aires de jeux en lien avec le CMJ.</li>
+                    <li>Restructurer l'espace avec des terrains de padel.</li>
+                    <li>Mise en place de stages "argent de poche" (15-17ans).</li>
+                    <li>Climatiser la salle de motricité de l'école maternelle.</li>
+                    <li>Etudier la création d'une maison de la jeunesse (MJC).</li>
+                </ul>
+            </div>
+
+            <div class="card theme-orange">
+                <h3>Proximité, solidarité, sécurité</h3>
+                <p><strong>Objectif:</strong> Faire du lien, protéger chacun, soutenir les plus fragiles.</p>
+                <ul>
+                    <li>Intégration de la MARPA au sein du CCAS.</li>
+                    <li>Favoriser le portage de repas pour lutter contre l'isolement.</li>
+                    <li>Repenser nos outils de communication et créer des Cafés-rencontres.</li>
+                    <li>Poursuivre l'installation de la vidéoprotection et de défibrillateurs.</li>
+                    <li>Demander l'ajout d'Abribus sur la ligne 20 et sécuriser les déplacements.</li>
+                </ul>
+            </div>
+
+            <div class="card theme-vert">
+                <h3>Un village plus vert, plus respirable</h3>
+                <p><strong>Objectif:</strong> Améliorer notre cadre de vie pour qu'il soit plus sain et durable.</p>
+                <ul>
+                    <li>Acquérir le bois de Maule pour créer des liaisons douces.</li>
+                    <li>Renaturer la cour de l'école élémentaire.</li>
+                    <li>Poursuivre l'opération "une naissance, un arbre".</li>
+                    <li>Aménagement d'espaces verts aux abords du lac de l'Arche.</li>
+                    <li>Mise en valeur de notre petit patrimoine et chemins de randonnée.</li>
+                </ul>
+            </div>
+
+            <div class="card theme-bleu-clair">
+                <h3>Économie locale et innovation</h3>
+                <p><strong>Objectif:</strong> Redynamiser l'activité, soutenir nos entrepreneurs et préparer l'avenir.</p>
+                <ul>
+                    <li>Développer la maison de santé avec les praticiens.</li>
+                    <li>Installer des bornes de recharge pour véhicules.</li>
+                    <li>Installer des panneaux photovoltaïques sur les structures communales.</li>
+                </ul>
+            </div>
+
+            <div class="card theme-rouge">
+                <h3>Gouvernance ouverte et participative</h3>
+                <p><strong>Objectif:</strong> Donner la parole aux citoyens et rendre des comptes.</p>
+                <ul>
+                    <li>Maîtriser les budgets et la pression fiscale.</li>
+                    <li>Étudier le devenir de l'ancienne mairie pour accueillir du public.</li>
+                    <li>Développer l'alimentation bio et les circuits courts.</li>
+                </ul>
+            </div>
+        </div>
+    </section>
+
+    <section id="equipe">
+        <h2 class="section-title">Rencontrez notre équipe</h2>
+        <p class="subtitle">Une équipe engagée chaque jour pour le bien-être collectif et l'avenir de Saint-Saturnin.</p>
+        
+        <div class="trombi-container">
+            <img src="visuel/trombi.jpg" alt="Trombinoscope de l'équipe" class="trombi-img">
+        </div>
+
+        <div class="slider-container">
+            <button class="slider-btn prev-btn" id="prevBtn">&#10094;</button>
+            <div class="slider-track-container">
+                <div class="slider-track" id="portrait-track">
+                    </div>
+            </div>
+            <button class="slider-btn next-btn" id="nextBtn">&#10095;</button>
+        </div>
+    </section>
+
+    <footer id="suivez-nous">
+        <h2 style="color: white; margin-bottom: 20px;">Rejoignez-nous sur les réseaux</h2>
+        
+        <div class="social-links">
+            <a href="https://www.facebook.com/share/1BnjhCkZpx/?mibextid=wwXIfr" target="_blank" aria-label="Facebook de la campagne">
+                <svg class="social-icon fb" viewBox="0 0 24 24"><path d="M22.675 0h-21.35C.597 0 0 .597 0 1.325v21.351C0 23.403.597 24 1.325 24H12.82v-9.294H9.692v-3.622h3.128V8.413c0-3.1 1.893-4.788 4.659-4.788 1.325 0 2.463.099 2.795.143v3.24l-1.918.001c-1.504 0-1.795.715-1.795 1.763v2.313h3.587l-.467 3.622h-3.12V24h6.116c.73 0 1.323-.597 1.323-1.324V1.325C24 .597 23.403 0 22.675 0z"/></svg>
+            </a>
+            <a href="https://www.instagram.com/st_saturnin.pvav?igsh=ZjJpbjA2YnZxbXpz" target="_blank" aria-label="Instagram de la campagne">
+                <svg class="social-icon insta" viewBox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.052.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98C8.333 23.986 8.741 24 12 24c3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 100 12.324 6.162 6.162 0 000-12.324zM12 16a4 4 0 110-8 4 4 0 010 8zm6.406-11.845a1.44 1.44 0 100 2.881 1.44 1.44 0 000-2.881z"/></svg>
+            </a>
+        </div>
+
+        <div class="qr-container">
+            <img src="visuel/insta.jpg" alt="QR Code Instagram" class="qr-code">
+        </div>
+
+        <img src="visuel/logo.jpg" alt="Logo Saint-Saturnin" class="logo-footer">
+        <p>Le 15 mars, donnons un nouveau cap à notre commune. Avec vous, pour vous.</p>
+        <p>Le choix de votre équipe municipale pour les 6 prochaines années vous appartient.</p>
+        <p><small>© 2026 Saint-Saturnin - Pour vous et avec vous</small></p>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>
