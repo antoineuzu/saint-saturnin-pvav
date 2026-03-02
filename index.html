@@ -6,7 +6,6 @@
     <title>Saint-Saturnin - Pour vous et avec vous</title>
     <link rel="stylesheet" href="style.css">
     
-    <!-- Code de suivi Vercel Web Analytics -->
     <script>
   window.va = window.va || function () { (window.vaq = window.vaq || []).push(arguments); };
 </script>
@@ -34,6 +33,10 @@
         <div class="alert-box">
             <h3>📅 Réunion Publique</h3>
             <p>Le jeudi 12 mars à 20h30 | Au Centre Culturel du Val de Vray</p>
+        </div>
+
+        <div style="text-align: center; margin-top: 25px;">
+            <button id="openSuggestionBtn" class="suggestion-trigger-btn">Construisons ensemble : déposez votre idée pour Saint-Saturnin en un clic !</button>
         </div>
     </section>
 
@@ -154,11 +157,44 @@
         <p><small>© 2026 Saint-Saturnin - Pour vous et avec vous</small></p>
     </footer>
 
+    <div id="suggestionModal" class="modal-suggestion">
+        <div class="modal-suggestion-content">
+            <div style="text-align: center; margin-bottom: 15px;">
+                <img src="visuel/logo.jpg" alt="Logo" style="height: 70px;">
+            </div>
+            
+            <h2 class="section-title" style="font-size: 1.6em; margin-bottom: 20px; line-height: 1.2;">Partagez nous vos idées et vos suggestions !</h2>
+            
+            <div id="suggestionFormContainer">
+                <form id="suggestionForm">
+                    <div class="form-row-suggestion">
+                        <div class="form-group-suggestion">
+                            <label for="sugg-nom">Nom et Prénom (Facultatif)</label>
+                            <input type="text" id="sugg-nom" name="Nom" placeholder="Ex: Jean Dupont">
+                        </div>
+                        <div class="form-group-suggestion">
+                            <label for="sugg-email">Adresse e-mail (Facultatif)</label>
+                            <input type="email" id="sugg-email" name="Email" placeholder="jean@exemple.fr">
+                        </div>
+                    </div>
+                    <div class="form-group-suggestion full-width">
+                        <label for="sugg-idee">Votre idée ou suggestion (500 caractères max) *</label>
+                        <textarea id="sugg-idee" name="Idee" rows="5" maxlength="500" required placeholder="Tapez votre suggestion ici..."></textarea>
+                        <div class="char-counter-suggestion"><span id="sugg-char-count">0</span> / 500</div>
+                    </div>
+                    <button type="submit" id="submitSuggestionBtn" class="submit-suggestion-btn">Envoyer l'idée</button>
+                </form>
+            </div>
+
+            <div id="suggestionSuccessContainer" style="display: none; text-align: center; padding: 20px 0;">
+                <p style="font-size: 1.2em; color: var(--bleu-fonce); font-weight: bold; margin-bottom: 30px; line-height: 1.5;">
+                    Merci ! Votre proposition pour Saint-Saturnin est bien reçue. On en parle ensemble ? Retrouvez-nous à la réunion publique du 12 mars pour partager votre vision avec toute l'équipe !
+                </p>
+                <button id="closeSuggestionPageBtn" class="submit-suggestion-btn" style="background-color: var(--bleu-fonce);">Fermer la page</button>
+            </div>
+        </div>
+    </div>
+
     <script src="script.js"></script>
 </body>
 </html>
-
-
-
-
-

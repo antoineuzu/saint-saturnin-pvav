@@ -1,13 +1,114 @@
+
+const GOOGLE_SCRIPT_URL = "https://script.google.com/macros/s/AKfycbzqutfSNqwKi9M99-gRkYVizu8ybE4MEulyyDWsfhussVcW5JNxuV9aNWBfHk6XDnE-/exec";
+
 document.addEventListener("DOMContentLoaded", function() {
+
+    // ==========================================
+    // 1. GESTION DE LA POP-UP BOÎTE À IDÉES
+    // ==========================================
+    const suggModal = document.getElementById("suggestionModal");
+    const openBtn = document.getElementById("openSuggestionBtn");
+    const closePageBtn = document.getElementById("closeSuggestionPageBtn");
+    const formContainer = document.getElementById("suggestionFormContainer");
+    const successContainer = document.getElementById("suggestionSuccessContainer");
+    const form = document.getElementById("suggestionForm");
+    const submitBtn = document.getElementById("submitSuggestionBtn");
+
+    function closeModal() {
+        suggModal.style.display = "none";
+        document.body.style.overflow = "auto";
+        
+        // On réinitialise l'affichage pour la prochaine fois
+        setTimeout(() => {
+            formContainer.style.display = "block";
+            successContainer.style.display = "none";
+            form.reset();
+            document.getElementById('sugg-char-count').textContent = "0";
+        }, 300);
+    }
+
+    if (openBtn && suggModal) {
+        openBtn.addEventListener("click", function() {
+            suggModal.style.display = "block";
+            document.body.style.overflow = "hidden"; // Empêche de scroller derrière
+        });
+
+        closePageBtn.addEventListener("click", closeModal);
+
+        // Ferme si on clique à l'extérieur de la pop-up
+        window.addEventListener("click", function(event) {
+            if (event.target == suggModal) {
+                closeModal();
+            }
+        });
+    }
+
+    // --- COMPTEUR DE CARACTÈRES ---
+    const textarea = document.getElementById('sugg-idee');
+    const charCount = document.getElementById('sugg-char-count');
+    const counterContainer = document.querySelector('.char-counter-suggestion');
+
+    if (textarea) {
+        textarea.addEventListener('input', function() {
+            const currentLength = this.value.length;
+            charCount.textContent = currentLength;
+            if (currentLength >= 500) {
+                counterContainer.classList.add('limit-reached');
+            } else {
+                counterContainer.classList.remove('limit-reached');
+            }
+        });
+    }
+
+    // --- ENVOI DES DONNÉES (FETCH) ---
+    if (form) {
+        form.addEventListener('submit', function(e) {
+            e.preventDefault();
+
+            if (GOOGLE_SCRIPT_URL === "VOTRE_LIEN_GOOGLE_SCRIPT_ICI") {
+                alert("Erreur de configuration : Vous n'avez pas mis le lien Google Script dans le fichier script.js !");
+                return;
+            }
+
+            const originalText = submitBtn.textContent;
+            submitBtn.textContent = "Envoi en cours...";
+            submitBtn.disabled = true;
+
+            const formData = new FormData(form);
+
+            fetch(GOOGLE_SCRIPT_URL, {
+                method: 'POST',
+                mode: 'no-cors',
+                body: formData
+            })
+            .then(() => {
+                // Succès de l'envoi : on cache le formulaire et on affiche les remerciements
+                formContainer.style.display = "none";
+                successContainer.style.display = "block";
+                submitBtn.textContent = originalText;
+                submitBtn.disabled = false;
+            })
+            .catch(error => {
+                submitBtn.textContent = "Erreur de connexion. Réessayez.";
+                setTimeout(() => {
+                    submitBtn.textContent = originalText;
+                    submitBtn.disabled = false;
+                }, 3000);
+            });
+        });
+    }
+
+    // ==========================================
+    // 2. GESTION DU CARROUSEL DES PORTRAITS
+    // ==========================================
     const track = document.getElementById('portrait-track');
     const maxPortraitsPossibles = 25; 
     
     let imagesChargees = [];
     let imagesTestees = 0;
     let currentIndex = 0;
-    let autoPlayInterval; // Variable pour stocker notre minuterie
+    let autoPlayInterval; 
 
-    // Chargement dynamique des images
     for (let i = 1; i <= maxPortraitsPossibles; i++) {
         let img = new Image();
         img.src = `visuel/portrait-${i}.jpg`;
@@ -41,28 +142,23 @@ document.addEventListener("DOMContentLoaded", function() {
         mettreAJourSlider();
     }
 
-    // Gère les 3 positions exactes et relance la minuterie
     function mettreAJourSlider() {
         const items = document.querySelectorAll('.slider-item');
         if (items.length === 0) return;
 
-        // On nettoie toutes les classes
         items.forEach(item => {
             item.className = 'slider-item'; 
         });
 
-        // On calcule qui est avant et qui est après (en boucle)
         let prevIndex = (currentIndex - 1 + items.length) % items.length;
         let nextIndex = (currentIndex + 1) % items.length;
 
-        // On distribue les 3 rôles
         items[currentIndex].classList.add('active');
         if (items.length > 1) {
             items[prevIndex].classList.add('prev');
             items[nextIndex].classList.add('next');
         }
 
-        // On relance le chronomètre de 15 secondes pour le mode automatique
         relancerMinuterie();
     }
 
@@ -78,15 +174,17 @@ document.addEventListener("DOMContentLoaded", function() {
         mettreAJourSlider();
     }
 
-    // Gestion du défilement automatique
     function relancerMinuterie() {
-        clearInterval(autoPlayInterval); // On efface l'ancienne minuterie
+        clearInterval(autoPlayInterval);
         autoPlayInterval = setInterval(() => {
             passerAuSuivant();
-        }, 15000); // 15000 ms = 15 secondes
+        }, 15000); 
     }
 
-    // Clics sur les flèches
-    document.getElementById('nextBtn').addEventListener('click', passerAuSuivant);
-    document.getElementById('prevBtn').addEventListener('click', passerAuPrecedent);
+    // Clics sur les flèches du slider existant
+    const nextBtn = document.getElementById('nextBtn');
+    const prevBtn = document.getElementById('prevBtn');
+    
+    if (nextBtn) nextBtn.addEventListener('click', passerAuSuivant);
+    if (prevBtn) prevBtn.addEventListener('click', passerAuPrecedent);
 });
