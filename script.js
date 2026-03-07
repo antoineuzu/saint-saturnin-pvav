@@ -102,7 +102,7 @@ document.addEventListener("DOMContentLoaded", function() {
     // 2. GESTION DU CARROUSEL DES PORTRAITS
     // ==========================================
     const track = document.getElementById('portrait-track');
-    const maxPortraitsPossibles = 25; 
+    const maxPortraitsPossibles = 27; 
     
     let imagesChargees = [];
     let imagesTestees = 0;
@@ -187,4 +187,5 @@ document.addEventListener("DOMContentLoaded", function() {
     
     if (nextBtn) nextBtn.addEventListener('click', passerAuSuivant);
     if (prevBtn) prevBtn.addEventListener('click', passerAuPrecedent);
+
 });
